@@ -1,10 +1,25 @@
-.app {
-  background-color: green;
-  height: 50px;
-  border: 1px solid blue;
+html, body {
+ margin: 0;
+ padding: 0;
+ width: 100%;
+ height: 100%;
+ background-color: black;
+ text-align: center;
 }
 
-.bap {
-  background-color: red;
-  height: 25px;
+.app {
+  height: 100%;
+  font-weight: 100%;
+}
+
+button {
+  color: #fff !important;
+  text-transform: uppercase;
+  background: #60a3bc;
+  padding: 20px;
+  border-radius: 50px;
+  display: inline-block;
+  border: none;
+  margin: 20px auto;
+  width: 100px;
 }

@@ -1,23 +1,19 @@
 {
-  "name": "webpack-express-boilerplate",
+  "name": "SED-FOG play demo",
   "version": "0.1.0",
-  "description": "A boilerplate for running a Webpack workflow in Node express",
+  "description": "a audio player for demoing SED-FOG",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/christianalfoni/webpack-express-boilerplate.git"
+    "url": "https://github.com/jeffhem/SED-FOG-play-demo.git"
   },
   "keywords": [
     "express",
     "webpack",
     "node"
   ],
-  "author": "Christian Alfoni",
+  "author": "Jeff Ng",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/christianalfoni/webpack-express-boilerplate/issues"
-  },
-  "homepage": "https://github.com/christianalfoni/webpack-express-boilerplate",
   "scripts": {
     "test": "",
     "start": "node server",

@@ -1,5 +1,5 @@
 {
-  "name": "SED-FOG play demo",
+  "name": "SED-FOG_playing_demo",
   "version": "0.1.0",
   "description": "a audio player for demoing SED-FOG",
   "main": "server.js",

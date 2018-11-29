@@ -7,8 +7,10 @@ export default class App extends Component {
     this.state = {
       isPlaying: false,
       isLoading: true,
+      soundClips: [],
     };
-    this.stop = this.stop.bind(this);
+    this.play = this.play.bind(this);
+    this.renderPlayList = this.renderPlayList.bind(this);
     this.source;
     this.drawVisual;
     this.audioCtx = new (window.AudioContext || window.webkitAudioContext);
@@ -16,13 +18,26 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    fetch('http://localhost:4001/files', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          soundClips: res,
+        });
+      });
+  }
+
+  play(e) {
+    const {isPlaying, isLoading} = this.state;
+    const soundClip = e.target.innerText;
     const width = window.innerWidth;
-    const height = 300;
+    const height = 200;
     const canvas = document.querySelector('.visualizer');
     canvas.width = width;
     canvas.height = height;
-
-    fetch('https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3')
+    fetch(`http://localhost:4001/files/${soundClip}`)
       .then(res => res.arrayBuffer())
       .then(audioBuffer => {
         const audioCtx = this.audioCtx;
@@ -68,10 +83,7 @@ export default class App extends Component {
             draw();
           });
       });
-  }
 
-  stop() {
-    const {isPlaying} = this.state;
     if (isPlaying) {
       this.source.stop(this.audioCtx.currentTime);
       window.cancelAnimationFrame(this.drawVisual);
@@ -81,12 +93,22 @@ export default class App extends Component {
     }
   }
 
+  renderPlayList() {
+    const {soundClips} = this.state;
+    if (soundClips.length > 0) {
+      return soundClips.map(soundClip =>
+        (
+          <button onClick={this.play}>{soundClip}</button>
+        )
+      );
+    }
+  }
+
   render() {
-    const { isLoading } = this.state;
     return (
       <div className={styles.app}>
-        <canvas className="visualizer"></canvas>
-        <button onClick={this.stop}>{isLoading ? 'Loading...' : 'Stop'}</button>
+        <canvas className="visualizer" height="200"></canvas>
+        <div className="sound-clips">{this.renderPlayList()}</div>
       </div>
     );
   }

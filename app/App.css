@@ -20,6 +20,11 @@ button {
   border-radius: 50px;
   display: inline-block;
   border: none;
-  margin: 20px auto;
-  width: 100px;
+  margin: 10px;
+  width: 250px;
+}
+
+button:active, button:focus {
+  background: #27637a;
+  outline: none;
 }

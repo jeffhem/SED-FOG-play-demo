@@ -18,7 +18,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4001/files', {
+    fetch('http://localhost:5000/files', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -37,7 +37,7 @@ export default class App extends Component {
     const canvas = document.querySelector('.visualizer');
     canvas.width = width;
     canvas.height = height;
-    fetch(`http://localhost:4001/files/${soundClip}`)
+    fetch(`http://localhost:5000/files/${soundClip}`)
       .then(res => res.arrayBuffer())
       .then(audioBuffer => {
         const audioCtx = this.audioCtx;
